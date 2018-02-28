@@ -131,7 +131,7 @@ group :development, :test do
   # Test JS browser interactions
   gem 'selenium-webdriver', '>= 2.45.0'
   #  Ruby cops
-  gem 'rubocop', '~> 0.40.0', require: false
+  gem 'rubocop', '~> 0.52.1', require: false
   # Ruboco for Rspec
   gem 'rubocop-rspec'
   # Rubocop for guard
