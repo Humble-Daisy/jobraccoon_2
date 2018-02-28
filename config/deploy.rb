@@ -6,7 +6,7 @@ set :repo_url, "git@example.com:me/my_repo.git"
 
 
 set :application,     "jobraccoon"
-set :repo_url,        "git@github.com:dschmura/jobraccoon_2.git"
+set :repo_url, "git@github.com:Humble-Daisy/jobraccoon_2.git"
 set :user,            'deployer'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
@@ -89,7 +89,7 @@ end
   desc 'Upload to shared/config'
   task :upload do
   on roles (:app) do
-    upload! "config/master.key",  "#{shared_path}/config/master.key"
+    # upload! "config/master.key",  "#{shared_path}/config/master.key"
     upload! "config/puma.sample.rb",  "#{shared_path}/config/puma.rb"
     upload! "config/database.yml", "#{shared_path}/config/database.yml"
     upload! "config/global_config.yml", "#{shared_path}/config/global_config.yml"
@@ -120,5 +120,5 @@ end
 ## Linked Files & Directories (Default None):
 
 set :linked_files, fetch(:linked_files, []).push('.env')
-set :linked_files, %w{config/puma.rb config/master.key config/database.yml config/global_config.yml}
+set :linked_files, %w{config/puma.rb  config/database.yml config/global_config.yml}
 set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
