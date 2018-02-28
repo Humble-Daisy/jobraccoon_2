@@ -1,0 +1,34 @@
+<style>
+.pp-dashboard-boxes .pp-pipe-box {
+background: #fff;
+border-radius: 5px;
+box-shadow: 0 2px 4px 0 rgba(192, 208, 230, 0.5);
+float: left;
+height: 170px;
+margin: 0 14px 14px 0;
+overflow: hidden;
+position: relative;
+text-align: center;
+width: 180px
+}
+.pp-pipe-add-new {
+	background: transparent;
+border: 1px dashed #9aaabe;
+box-shadow: none;
+
+transition: all 0.2s
+}
+</style>
+<div class="pp-pipe-box" data-pipe-id="313627"><a href="#favorite-pipe" class="pp-ico-star" tabindex="-3" title="Favorite this pipe"></a><a href="https://app.pipefy.com/pipes/313627" class="pp-pipe-box-link" title="Simple To-do List" tabindex="-3"><span class="pp-pipe-ico-check"></span><h2 class="pp-pipe-title"><!-- react-text: 15 -->Simple To-do List<!-- /react-text --><span>0 cards</span></h2></a><a href="#menu" title="More options" tabindex="-3" class="pp-trigger-dropdown pp-ico-dots"></a></div>
+
+<div class="pp-pipe-box pp-pipe-add-new">
+    <a id="create-new-pipe" title="Add new pipe" href="#">
+      <span class="pp-ico-plus"></span>
+      <h2 class="pp-new-pipe-title">Add new pipe</h2>
+</a>  </div>
+
+<% @boards.each do |board| %>
+<%= link_to board.name, board_path(board) %><br />
+<% end %>
+<hr />
+<%= link_to "New board", new_board_path %><br />

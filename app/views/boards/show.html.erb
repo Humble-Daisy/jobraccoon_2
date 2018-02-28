@@ -1,0 +1,267 @@
+<article class="content dashboard-page" style="width:100%;">
+
+<!-- <div class="alert alert-info" role="alert">
+  Your board still has demo jobs. <a href="#">Click here to remove this.</a>
+</div> -->
+
+<div class="kanban fullheight gray">
+
+<%= render partial: 'swimlanes/swimlane', collection: @board.swimlanes %>
+
+<a class="add-job-block addSwimlane" id="addSwimlane">+ New List</a>
+</div>
+</article>
+
+
+<span class="add-job-btn btn btn-large btn-accent animated tada" data-toggle="modal" data-target="#newJob">
+  <span class="fa fa-plus-circle black"></span> <span>Add Job</span>
+</span>
+
+<!-- NEW JOB -->
+<div class="modal" id="newJob" tabindex="-1" role="dialog" aria-labelledby="newJobLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New job</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="new_job" id="new_job" accept-charset="UTF-8" method="post">
+          <div class="form-group">
+            <div class="input-group">
+              <input type="text" placeholder="Company Name" name="card[company]" id="card_company" class="form-control"/>
+              <span class="input-group-addon">
+              <i class="fa fa-building-o" id="company-icon"></i>
+              <img src="" style="display:none" width="20" id="company-logo">
+              </span>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <input type="text" placeholder="Job Title" name="card[title]" id="card_title" class="form-control"/>
+              <span class="input-group-addon">
+              <i class="fa fa-tag"></i>
+              </span>
+            </div>
+          </div>
+          <input type="text" name="card[logo]" id="card_logo" class="form-control" hidden/>
+          <input type="text" name="card[swimlane_id]" id="card_swimlane_id" class="form-control" hidden/>
+          <div class="form-group">
+            <div class="input-group">
+              <input type="text" placeholder="Company URL" name="card[url]" id="card_url"  class="form-control"/>
+              <span class="input-group-addon">
+              <i class="fa fa-globe"></i>
+              </span>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-accent addJobComplete">Add job</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- EXISTING JOB -->
+<div class="modal" id="editJob" tabindex="-1" role="dialog" aria-labelledby="editJobLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+    </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="editJobLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Body text comes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<script>
+$('form.ajax :input').blur(function() {
+    $(this).closest('form').submit();
+});
+
+$('#addSwimlane').click(function() {
+  $.ajax({
+    type: "GET",
+    url: '<%= new_board_swimlane_url(@board.id) %>',
+    complete: didReceiveSwimlane
+  });
+  event.preventDefault();
+  return false;
+});
+function didReceiveSwimlane(response, status) {
+    if (status == 'success') {
+      $( response.responseText ).insertBefore( $( "#addSwimlane" ) );
+    }
+}
+
+
+set_positions = function(){
+    // loop through and give each task a data-pos
+    // attribute that holds its position in the DOM
+    $('.sortable .card').each(function(i){
+        $(this).attr("data-pos",i+1);
+    });
+}
+
+
+
+$('.connectedSortable').on('click', '.card', function() {
+  $("#editJob .modal-content").html("Loading...");
+  var card_id = $(this).data('id');
+  var swimlane_id = $(this).data('swimlane');
+  $( "#editJob .modal-content" ).load( "/cards/" + card_id + "/edit");
+  $('#editJob').modal('show');
+});
+
+
+
+
+
+
+
+
+$( ".sortable" ).sortable({
+  scroll: false,
+  appendTo: 'body',
+  helper: 'clone',
+  start: function( event, ui ) {
+    $(ui.item).addClass("isDragging");
+  },
+  stop:function( event, ui ) {
+    $(ui.item).removeClass("isDragging");
+
+    updated_order = []
+    // set the updated positions
+    set_positions();
+
+    // populate the updated_order array with the new task positions
+    $('.sortable .card').each(function(i){
+        var swimlane_id = $(this).parents(".swimlane:first").data("swimlane");
+        updated_order.push({ id: $(this).data("id"), position: i+1, swimlane_id: swimlane_id });
+    });
+    $.ajax({
+        type: "PUT",
+        url: '/boards/sort',
+        data: { order: updated_order }
+    });
+
+  },
+  placeholder: 'ui-state-highlight',
+  connectWith: ".connectedSortable"
+}).disableSelection();
+
+
+
+$('.addJobComplete').click(function() {
+  event.preventDefault();
+    $.ajax('/cards', {
+        type: "POST",
+        data: $('form#new_job').serialize(),
+		success: function(response) {
+                  var company = $('#card_company').val();
+                  var title = $('#card_title').val();
+                  var logo = $('#card_logo').val();
+                  var cdomain = $('#card_url').val();
+                  var swimlane_id = $('#card_swimlane_id').val();
+                  $('#newJob').modal('hide');
+                  $('div.swimlane[data-swimlane=' + swimlane_id + '] .sortable').append('<div class="card p-3 m-2 ui-sortable-handle" id="card_' + response.id + '" data-id="' + response.id + '" data-swimlane="' + swimlane_id + '"><div class="row"><div class="col-3"><img src="'+logo+'"></div><div class="col-7"><h6 class="company">'+company+'</h6><h7 class="position">'+title+'</h7></div><div class="col-1 options"><a class="icon-trash"></a><a class="icon-link"></a></div></div></div>');
+        },
+        error: function() {
+            alert('Error');
+        }
+    });
+    return false;
+});
+
+
+
+// Clear input in modal when not active
+$('#newJob').on('hidden.bs.modal', function () {
+    $(this).find('form').trigger('reset');
+    $("#company-icon").show();
+    $("#company-logo").hide();
+})
+
+$( function() {
+  $( "#card_company" ).autocomplete({
+    minLength: 0,
+    source: function (term, response) {
+      $.getJSON('https://autocomplete.clearbit.com/v1/companies/suggest?query='+term.term, function (data) {
+        response(data);
+      });
+    },
+    focus: function( event, ui ) {
+      $( "#card_company" ).val( ui.item.label );
+      return false;
+    },
+    select: function( event, ui ) {
+      $("#card_company").val( ui.item.name );
+      $("#card_url").val( ui.item.domain );
+      $("#card_logo").val( ui.item.logo );
+      $("#company-icon").hide();
+      $("#company-logo").attr( "src", ui.item.logo );
+      $("#company-logo").show();
+      return false;
+    }
+  })
+  .autocomplete( "instance" )._renderItem = function( ul, item ) {
+    return $( "<li>" )
+      .append( "<div><img src='" + item.logo + "' float='left' class='dropdown-logo' />" + item.name + "<br><small style='color:gray;'>" + item.domain + "</small></div>" )
+      .appendTo( ul );
+  };
+} );
+
+
+
+
+$('#newJob').on('show.bs.modal', function (event) {
+	var button = $(event.relatedTarget) // Button that triggered the modal
+	var swimlane_id = button.data('swimlane') // Extract info from data-* attributes
+	if (!swimlane_id) { swimlane_id = $('.swimlane').data('swimlane'); }
+	var modal = $(this);
+	$('.modal').find("#card_swimlane_id").val( swimlane_id );
+});
+
+</script>

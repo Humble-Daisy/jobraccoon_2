@@ -1,0 +1,35 @@
+/*------------------------------------
+39. Headquote
+------------------------------------*/
+.cps-head-quote-section{
+    .col-xs-12{
+        &:before{
+            content: "\f10d";
+            font-family: "FontAwesome";
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 110px;
+            opacity: 0.2;
+            line-height: 1;
+            margin-top: -7px;
+        }
+    }
+    .cps-head-quote{
+        padding: 42px 0;
+        .cps-headquote-text{
+            font-size: 2.2rem;
+            font-family: $headingFont;
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+        .cps-headquote-by{
+            margin-bottom: 0;
+            font-family: $headingFont;
+            font-weight: 500;
+            .cps-headquote-name{
+                text-transform: uppercase;
+            }
+        }
+    }
+}

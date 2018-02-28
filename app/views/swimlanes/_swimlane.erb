@@ -1,0 +1,26 @@
+<div class="swimlane animated fadeInLeft fullheight" data-swimlane="<%= swimlane.id %>">
+  <%= form_for swimlane, :url => swimlane_path(swimlane), :method => :put, :remote => true, :html => { :id => "swimlane-form", :class => "ajax inline" } do |form|-%>
+    <%= text_field_tag :name, swimlane.name, :placeholder => 'Untitled' %>
+
+
+    <!-- DELETE BUTTON -->
+    <% display_delete = false; %>
+    <% if defined?(swimlane_counter) %>
+      <% unless swimlane_counter == 0 %>
+        <% display_delete = true; %>
+      <% end %>
+      <% else %>
+        <% display_delete = true; %>
+      <% end %>
+	  <%= link_to '', swimlane_url(swimlane), method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, :id => 'delete_swimlane', :class => 'delete_swimlane fa fa-trash-o black' %>
+  <% end %>
+  <br />
+  <!-- DELETE BUTTON -->
+
+
+  <a class="add-job-block" data-toggle="modal" data-target="#newJob" data-lane-number="9283837" data-swimlane="<%= swimlane.id %>">+</a>
+
+  <div class="sortable connectedSortable">
+    <%= render partial: 'cards/card', collection: swimlane.cards %>
+  </div>
+</div>

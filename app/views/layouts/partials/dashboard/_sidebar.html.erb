@@ -1,0 +1,32 @@
+       <!--<nav class="col-sm-2 col-md-1 d-none d-sm-block sidebar fullheight">
+          <ul class="nav nav-pills flex-column mt-4">
+            <li class="nav-item">
+              <a class="nav-link" href="<%= dashboards_url %>"><span class="fa fa-tachometer black"></span></a>
+            </li>
+            <li class="nav-item">
+				<a class="nav-link" href="<%= boards_url %>/last"><span class="fa fa-columns black"></span></a>
+            </li>
+          </ul>
+        </nav>-->
+<aside class="sidebar">
+                    <div class="sidebar-container">
+                        <div class="sidebar-header">
+                            <div class="brand">
+                                <a href="/"><img src="/images/logo_white.png" width="30" height="30" alt="Seeker CRM"></a>
+                                Job Raccoon
+                            </div>
+                        </div>
+                        <nav class="menu">
+                            <ul class="sidebar-menu metismenu" id="sidebar-menu">
+                                <li class="<%= 'active' if params[:controller] == 'dashboards' %>">
+                                    <a href="<%= dashboards_url %>">
+                                        <i class="fa fa-home"></i> Dashboard </a>
+                                </li>
+                                <li class="<%= 'active' if params[:controller] == 'boards' %>">
+                                    <a href="<%= boards_url %>/last">
+                                        <i class="fa fa-home"></i> Board </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </aside>

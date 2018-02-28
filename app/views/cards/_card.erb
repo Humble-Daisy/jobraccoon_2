@@ -1,0 +1,16 @@
+<div class="card p-3 m-2" id="card_<%= card.id %>" data-id="<%= card.id %>" data-swimlane="<%= card.swimlane.id %>">
+  <div class="row">
+    <div class="col-3">
+      <img src="<%= card.logo %>" class="card_info mr-2">
+    </div>
+    <div class="col-7">
+      
+      <h6 class="company"><%= card.company %></h6>
+      <h7 class="position"><b><%= card.title %></b></h7>
+      <h7 class="position">Applied <%= time_ago_in_words(card.created_at) %> ago</h7>
+    </div>
+    <div class="col-1 options">
+      <%= link_to '', card_url(card), method: :delete, data: { confirm: 'Are you sure? All notes and tasks related to this job will be removed. This action cannot be undone.'}, :remote => true, :class => 'delete_card fa fa-trash black' %>
+    </div>
+  </div>
+</div>

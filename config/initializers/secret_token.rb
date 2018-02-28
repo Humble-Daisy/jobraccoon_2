@@ -1,0 +1,1 @@
+SeekerCRM::Application.config.secret_key_base = "gKWsnY73gUvCdsVY3KMZEq33UxVwm859c9G6y3ny"

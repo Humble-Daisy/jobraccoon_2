@@ -1,0 +1,6 @@
+$('#task_<%= @task.id %>').addClass('animated zoomOut');
+setTimeout(
+  function()
+  {
+    $('#task_<%= @task.id %>').remove();
+  }, 500);

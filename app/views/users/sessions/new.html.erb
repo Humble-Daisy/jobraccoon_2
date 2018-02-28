@@ -1,0 +1,30 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => 'form-signin'}) do |f| %>
+                    <div class="auth-content">
+                             <a class="btn btn-block btn-social btn-facebook" href="/users/auth/facebook">
+                                <span class="fa fa-facebook"></span> Sign in with Facebook
+                              </a>
+
+                            <a class="btn btn-block btn-social btn-twitter" href="/users/auth/twitter">
+                            <span class="fa fa-twitter"></span> Sign in with Twitter
+                            </a>
+
+                            <hr />
+                        <p class="text-center">LOGIN TO CONTINUE</p>
+                        <form id="login-form" action="/index.html" method="GET" novalidate="">
+                            <div class="form-group">
+                                <label for="username">Email address</label>
+                                <input type="email" class="form-control underlined" name="user[email]" id="user_email" placeholder="Your email address" required> </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control underlined" name="user[password]" id="user_password" placeholder="Your password" required> </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-block btn-primary">Login</button>
+                            </div>
+                            <div class="form-group">
+                                <p class="text-muted text-center">
+                                	<%= render "users/shared/links" %>
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+<% end %>

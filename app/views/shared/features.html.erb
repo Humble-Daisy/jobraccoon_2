@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Site information -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Job Raccoon — Boost your job search</title>
+    <meta name="description" content="Saasera Description">
+    <link rel="stylesheet" href="/assets_frontpage/css/bootstrap.min.css">
+<!--     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+
+    <link rel="stylesheet" href="<%= asset_path 'lp.css' %>"/>
+    
+    <link rel="stylesheet" href="/css/scheme/blue-green.css">
+    <!-- Custom CSS -->
+    
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <link rel="stylesheet" href="/css/responsive.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans%7CLato:400,600,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css" integrity="sha384-dNpIIXE8U05kAbPhy3G1cz+yZmTzA6CY8Vg/u2L9xRnHjJiAK76m2BIEaSEV+/aU" crossorigin="anonymous">
+    <!--[if lt IE 9]>
+        <script src="assets/js/html5shiv.min.js"></script>
+        <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    
+     <!-- Header -->
+    <nav class="navbar navbar-default style-3" data-spy="affix" data-offset-top="60">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                    <a class="navbar-brand" href="/" class="mt-10">
+                    <img src="images/logo_white.png" width="30" height="30" class="d-inline-block align-top" alt="Job Raccoon">
+                    Job Raccoon
+                    </a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/features">Features</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/users/sign_in">Login</a></li>
+                    <li class="login-item"><a href="/users/sign_up">Sign up</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Header End -->
+
+
+    <!-- Page Header -->
+    <div class="page-header style-3">
+        <div class="container">
+            <h2 class="page-title">Features</h2>
+            <ol class="breadcrumb">
+                <li><a href="/">Home</a></li>
+                <li class="active">Features</li>
+            </ol>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+    <div class="cps-main-wrap">
+       
+        <!-- Features Tab -->
+        <div class="cps-section cps-section-padding cps-bottom-0" id="cps-features">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 col-xs-12">
+                        <div class="cps-section-header text-center">
+                            <h3 class="cps-section-title">Boost your job search.</h3>
+                            <p class="cps-section-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="feature-tabs">
+
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" style="margin:0 auto;" role="tablist">
+                                <!-- <li role="presentation"><a href="#skype-to-skype-call" aria-controls="skype-to-skype-call" role="tab" data-toggle="tab"><i class="fa fa-skype"></i>Skype to skype<br/>call</a></li> -->
+                                <li role="presentation"><a href="#group-video-call" aria-controls="group-video-call" role="tab" data-toggle="tab"><i class="fa fa-signal"></i>Personal<br/>Dashboard</a></li>
+                                <li role="presentation" class="active"><a href="#instant-messaging" aria-controls="instant-messaging" role="tab" data-toggle="tab"><i class="fa fa-list"></i>Tasks &<br/>Notes</a></li>
+                                <li role="presentation"><a href="#call-phone-numbers" aria-controls="call-phone-numbers" role="tab" data-toggle="tab"><i class="fa fa-clock-o"></i>Reminders<br/>& Notifications</a></li>
+                                <!-- <li role="presentation"><a href="#screen-sharing" aria-controls="screen-sharing" role="tab" data-toggle="tab"><i class="fa fa-desktop"></i>Screen<br/>Sharing</a></li> -->
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade" id="group-video-call">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-xs-12 xs-bottom-30">
+                                            <h4>Personal Dashboard</h4>
+                                            <p>Easily see how well your job hunt is going.</p>
+                                            <ul class="feature-list">
+                                                <li><span class="fa fa-check-circle"></span>Number of jobs responded to</li>
+                                                <li><span class="fa fa-check-circle"></span>Job status analysis</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-6 col-xs-12">
+                                            <img class="img-responsive" src="images/misc/one.jpg" alt="...">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade in active" id="instant-messaging">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-xs-12 xs-bottom-30">
+                                            <h4>Tasks & Notes</h4>
+                                            <p>With Seeker you'll have one convenient place where you can find all your tasks and notes.</p>
+                                            <ul class="feature-list">
+                                                <li><span class="fa fa-check-circle"></span>Never forget to follow up</li>
+                                                <li><span class="fa fa-check-circle"></span>Have all your notes, meetings and calls in one list</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-6 col-xs-12">
+                                            <img class="img-responsive" src="images/misc/two.jpg" alt="Job search CRM">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="call-phone-numbers">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-xs-12 xs-bottom-30">
+                                            <h4>Reminders & Notifications</h4>
+                                            <p>Seeker will send you reminders when it's time to prepare for an interview, when to follow up, or anything else you want to be reminded about.</p>
+                                        </div>
+                                        <div class="col-sm-6 col-xs-12">
+                                            <img class="img-responsive" src="images/misc/three.jpg" alt="...">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Features Tab End -->
+        
+        <!-- Service Box -->
+       <!--  <div class="cps-section cps-section-padding" id="service-box">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <div class="cps-section-header text-center">
+                            <h3 class="cps-section-title">Contrary to <span>Popular</span> Belief, Lorem Ipsum is Not Simply<br/>Random Text. It Has Roots in a Piece</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="cps-service-boxs">
+                        <div class="col-sm-4">
+                            <div class="cps-service-box">
+                                <div class="cps-service-icon">
+                                    <span class="ti-bar-chart-alt"></span>
+                                </div>
+                                <h4 class="cps-service-title">Software Development</h4>
+                                <p class="cps-service-text">Develop quality cms theme to enable people build their site within a day</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="cps-service-box">
+                                <div class="cps-service-icon">
+                                    <span class="ti-comments"></span>
+                                </div>
+                                <h4 class="cps-service-title">Online Support</h4>
+                                <p class="cps-service-text">Take idea from client and convert that idea to a live, bug free and highly secured software</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="cps-service-box">
+                                <div class="cps-service-icon">
+                                    <span class="ti-mobile"></span>
+                                </div>
+                                <h4 class="cps-service-title">Apps Development</h4>
+                                <p class="cps-service-text">Make highly productive apps for multiple mobile device. </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- Service Box End -->
+        
+        <!-- Call to action -->
+        <div class="cps-cta cps-gray-bg style-3" id="cps-download" style="margin-top:30px;">
+            <div class="container text-center">
+                <h3 class="cps-cta-title">What are you waiting for?</h3>
+                <p class="cps-cta-text">With Seeker you'll make your job search more effective.<br />And...it's free!</p>
+                <div class="button-group">
+                    <a class="btn btn-primary" href="/users/sign_up">START NOW</a>
+                    <a class="btn btn-border" href="/users/sign_in">Sign in</a>
+                </div>
+            </div>
+        </div>
+        <!-- Call to action end -->
+
+    </div>
+
+    <footer class="style-4">
+        <div class="cps-footer-upper">
+            <div class="container">
+                <div class="cps-footer-widget-area">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="cps-widget about-widget">
+                                <a class="cps-footer-logo" href="/">
+                                    <img src="images/logo.png" alt="Seeker">
+                                </a>
+                                <p>Job Raccoon is a 100% free tool that makes your job search more efficient.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="cps-widget custom-menu-widget">
+                                <h4 class="cps-widget-title">Start now</h4>
+                                <ul class="widget-menu">
+                                    <li><a href="/users/sign_in">Log in</a></li>
+                                    <li><a href="/users/sign_up">Register <strong>(It's free)</strong></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="cps-widget custom-menu-widget">
+                                <h4 class="cps-widget-title">Useful Links</h4>
+                                <ul class="widget-menu">
+                                    <li><a href="/features">Features</a></li>
+                                    <li><a href="/contact">Contact us</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cps-footer-lower">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-xs-12 xs-text-center">
+                        <p class="copyright">Copyright 2017, <a href="https://mickniepoth.com" target="_blank">Mick Niepoth</a>. All Rights Reserved</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script src="assets_frontpage/js/jquery.min.js"></script>
+    <script src="assets_frontpage/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="assets_frontpage/js/bootstrap.min.js"></script>
+    <!-- <script src="assets/js/owl.carousel.js"></script> -->
+    <script src="assets_frontpage/js/visible.js"></script>
+    <script src="assets_frontpage/js/jquery.stellar.min.js"></script>
+    <script src="assets_frontpage/js/jquery.countTo.js"></script>
+    <!-- <script src="assets/js/imagesloaded.pkgd.min.js"></script> -->
+    <!-- <script src="assets/js/isotope.pkgd.min.js"></script> -->
+    <!-- <script src="assets/js/jquery.magnific-popup.min.js"></script> -->
+    <!-- <script src="assets/js/jquery.ajaxchimp.min.js"></script> -->
+    <!-- <script src="assets/js/plyr.js"></script> -->
+    <!-- <script src="assets/js/swiper.min.js"></script> -->
+    <!-- <script src="assets/js/slick.min.js"></script> -->
+    <script src="js/custom.js"></script>
+</body>
+
+</html>

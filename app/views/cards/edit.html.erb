@@ -1,0 +1,154 @@
+<div class="modal-header" style="border-bottom:0px;">
+  <span style="white-space: nowrap;">
+    <img src="<%= @cards.logo %>" class="modal-logo" />
+    <h5 class="modal-title" id="exampleModalPopoversLabel"><%= @cards.company %></h5>
+    <h7 class="modal-title"><%= @cards.title %></h7>
+	<%= link_to '', card_url(@cards), method: :delete, data: { confirm: 'Are you sure? All notes and tasks related to this job will be removed. This action cannot be undone.'}, :remote => true, :class => 'delete_swimlane fa fa-trash black' %>
+  </span>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="mt-3">
+  <div class="container-fluid">
+    <div class="row notes">
+      <div class="col-md-12">
+
+        <ul class="nav nav-tabs mb-2" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-expanded="true">
+              <span class="fa fa-pencil-square-o" aria-hidden="true"></span> New note
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="logactivity-tab" data-toggle="tab" href="#logactivity" role="tab" aria-controls="logactivity">
+              <span class="fa fa-plus" aria-hidden="true"></span> Log activity
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#createtask" role="tab" aria-controls="profile">
+              <span class="fa fa-calendar-o" aria-hidden="true"></span> Create task
+            </a>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+
+          <div class="tab-pane show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <%= simple_form_for Task.new, :remote => true, :id => 'new-note', html: { class: 'inline', style: 'width:100%' } do |f| %>
+              <%= f.input_field :card_id, :value => @cards.id, :hidden => '' %>
+              <%= f.input_field :task_type, :value => "note", :hidden => '' %>
+              <%= f.input_field :notes, :placeholder => "Type your note here..." %>
+              <%= f.button :submit, :value => "Save note", :class => "btn btn-primary small" %>
+            <% end %>
+          </div>
+
+          <div class="tab-pane" id="logactivity" role="logactivity" aria-labelledby="logactivity-tab">
+            <%= simple_form_for Task.new, :remote => true, :id => 'new-note', html: { class: 'form-inline inline log-activity', style: 'width:100%' } do |f| %>
+              <%= f.input_field :card_id, :value => @cards.id, :hidden => '' %>
+
+                <select class="custom-select mb-2 mr-sm-2 mb-sm-2" name="task[task_type]" id="task_task_type">
+                  <option selected value="interview">Log an interview</option>
+                  <option value="call">Log a call</option>
+                  <option value="email">Log an email</option>
+                </select>
+
+                <select class="custom-select mb-2 mr-sm-2 mb-sm-2" id="task_subline" name="task[subline]" style="display: none;">
+                  <option selected>Select an outcome</option>
+                  <option>No answer</option>
+                  <option>Busy</option>
+                  <option>Wrong number</option>
+                  <option>Left voicemail</option>
+                  <option>Connected</option>
+                </select>
+
+                <%= f.input_field :notes, :placeholder => "Describe the call..." %>
+
+              <%= f.button :submit, :value => "Save note", :class => "btn btn-primary small mt-2" %>
+            <% end %>
+          </div>
+
+          <div class="tab-pane" id="createtask" role="tabpanel" aria-labelledby="createtask-tab">
+            <%= simple_form_for Task.new, :remote => true, :id => 'new-task', html: { style: 'width:100%' } do |f| %>
+              <%= f.input_field :user_id, :value => current_user.id, :hidden => '' %>
+              <%= f.input_field :card_id, :value => @cards.id, :hidden => '' %>
+              <%= f.input_field :task_type, :value => "task", :hidden => '' %>
+              <%= f.input_field :notes, :placeholder => "Type your note here..." %>
+              <%= f.input :due_date, :as => :datetime %>
+							<div class="alert alert-info" role="alert">
+								<strong><i class="fa fa-bell-o highlight" aria-hidden="true" style="float:left"></i></strong> We'll remind you with an email, so you won't forget about this task. 
+							</div>
+              <%= f.button :submit, :value => "Save note", :class => "btn btn-primary small" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <div class="container">
+          <div class="row">
+            <div class="timeline-centered">
+              <%= render partial: 'tasks/task', collection: @cards.tasks %>
+                <article class="timeline-entry">
+                  <div class="timeline-entry-inner">
+                      <div class="timeline-icon bg-primary">
+                      <i class="fa fa-thumbs-up"></i>
+                    </div>
+
+                    <div class="timeline-label">
+                        <h6>Created this job</h6>
+                        <small><span><%= time_ago_in_words(@card.created_at) %> ago</span></small>
+                    </div>
+                  </div>
+                </article>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 light-gray border-left pt-3">
+        <%=  simple_form_for @cards, :remote => true, html: { class: 'inline ajax' } do |f| %>
+          <% if @cards.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@cards.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+              <ul>
+              <% @cards.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+            <%= f.input :company %>
+            <%= f.input :title %>
+            <%= f.input :location %>
+            <%= f.input :salary %>
+            <%= f.input :url %>
+            <%= f.input :description %>
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+ $('form.ajax :input').blur(function() {
+     $(this).closest('form').submit();
+ });
+
+  $("#logactivity #task_task_type").change(function(){
+   correspondingID = $(this).find(":selected").val()
+   if (correspondingID == 'call') {
+    $('#task_subline').show();
+    $('form.log-activity textarea#task_notes').attr("placeholder", "Describe the call...");
+  } else if (correspondingID == 'email') {
+    $('#task_subline').hide();
+    $('form.log-activity textarea#task_notes').attr("placeholder", "Describe or paste the content of the email...");
+  } else {
+    $('#task_subline').hide();
+    $('form.log-activity textarea#task_notes').attr("placeholder", "Describe the interview you had...");
+   }
+  });
+</script>

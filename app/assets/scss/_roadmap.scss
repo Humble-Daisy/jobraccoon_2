@@ -1,0 +1,276 @@
+/*-----------------------------
+40. Roadmap
+-----------------------------*/
+.navbar-roadmap{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 33.333333%;
+    z-index: 992;
+    background-color: #ffffff;
+    height: 100px;
+    box-shadow: 0 0 80px 40px #fff;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+}
+.cps-sidebar-container{
+    max-width: 400px;
+    width: calc(100% - (10px * 8));
+    margin: 0 auto;
+    .navbar-brand{
+        display: inline-block;
+        float: none;
+        height: 72px;
+        padding: 15px 0;
+        margin: 10px 0;
+    }
+}
+.cps-roadmap-main-wrap{
+    width: 33.333333%;
+}
+.cps-roadmap-section{
+    padding-bottom: 290px;
+    margin-top: 290px;
+    .socials{
+        a{
+            display: inline-block;
+            background-color: $primaryColor;
+            color: #ffffff;
+            height: 41px; 
+            width: 41px;
+            line-height: 41px;
+            text-align: center;
+            border-radius: 3px;
+            + a{
+                margin-left: 11px;
+            }
+            &:hover{
+                background-color: $baseFontColor;
+                color: #ffffff;
+            }
+        }
+    }
+}
+.cps-roadmap-header{
+    margin-bottom: 50px;
+    .cps-roadmap-header-title{
+        margin-top: 0;
+        font-size: 3.6rem;
+        font-weight: 400;
+        line-height: 4.5rem;
+    }
+    .cps-roadmap-header-text{
+        font-size: 1.8rem;
+        color: rgba(#262626, 0.7);
+        line-height: 3rem;
+    }
+}
+.cps-roadmap-right{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 66.666666%;
+    z-index: 993;
+    display: none;
+    .cps-right-img-wrap{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        &.svg-570{
+            width: 570px;
+            max-width: calc(100% - 30px);
+        }
+        &.svg-670{
+            width: 670px;
+            max-width: calc(100% - 30px);
+        }
+    }
+    .cps-right-content-wrap{
+        width: 950px;
+        max-width: calc(100% - 60px);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        .cps-service-boxs{
+            .col-sm-4:nth-child(3n + 1){
+                clear: left;
+            }
+        }
+        .cps-service-box.style-7{
+            background-color: transparent;
+            padding: 0;
+        }
+        .cps-services{
+            .col-md-4:nth-child(3n + 1){
+                clear: left;
+            }
+        }
+        .faqs{
+            .col-sm-6:nth-child(2n + 1){
+                clear: left;
+            }
+        }
+    }
+    .cps-contact-form{
+        width: 570px;
+        max-width: 100%;
+        input:not([type=submit]):not([type=radio]):not([type=checkbox]), select, textarea{
+            border-radius: 0;
+            border-width: 0 0 1px 0;
+            padding-left: 0;
+            padding-right: 0;
+            border-color: rgba(#262626, 0.2);
+            margin-bottom: 20px;
+        }
+        [type=submit]{
+            background-color: $primaryColor;
+            width: auto;
+            color: #ffffff;
+            border-radius: 3px;
+        }
+        ::-webkit-input-placeholder{
+            color: #262626;
+        }
+        ::-moz-placeholder{
+            color: #262626;
+        }
+        :-ms-input-placeholder{
+            color: #262626;
+        }
+        :-moz-placeholder{
+            color: #262626;
+        }
+    }
+    .copyright{
+        bottom: 0;
+        position: absolute;
+        left: 0;
+        right: 0;
+        text-align: center;
+        padding: 22px 0;
+    }
+    &.cps-text-white{
+        .cps-service-box.style-7 .cps-service-icon span, .cps-service-box.style-7 .cps-service-title, .cps-service-box .cps-service-text, .cps-service-box.style-7 .service-more, .cps-service .cps-service-icon span, .cps-service.style-3 .cps-service-title, .cps-service .cps-service-text{
+            color: #ffffff;
+            -webkit-text-fill-color: #ffffff;
+        }
+    }
+    &.cps-full-black{
+        .integrated-with-wrap.style-2 .integrated-with{
+            opacity: 1;
+        }
+    }
+}
+.blue-color{
+    color: #00aff0;
+}
+.green-color{
+    color: #0fd8a0;
+}
+.red-color{
+    color: #f93d66;
+}
+.yellow-color{
+    color: #feb748;
+}
+
+.limered-color{
+    color: #ecb7c6;
+}
+.pink-color{
+    color: #ee0979;
+}
+.blue-bg{
+    background-color: #00aff0;
+}
+.limeblue-bg{
+    background-color: #d1e8f6;
+}
+.green-gradient{
+    background-image: linear-gradient(to right, #06d79c, #82ebcd);
+}
+.skyblue-red-gradient{
+    background-image: linear-gradient(to right, #99dff9, #f93d66);
+}
+.yellow-green-gradient{
+    background-image: linear-gradient(to right, #feb748, #06d79c);
+}
+.red-limered-gradient{
+    background-image: linear-gradient(to right, #c20f42, #ecb7c6);
+}
+.yellow-red-gradient{
+    background-image: linear-gradient(to right, #feb748, #f93d66);
+}
+.pink-limepink-gradient{
+    background-image: linear-gradient(to right, #ee0979, #f9b5d6);
+}
+.btn{
+    &:hover{
+        color: #ffffff;
+    }
+    &.btn-primary{
+        &:hover{
+            color: #ffffff;
+        }
+    }
+    &.btn-green{
+        background-image: none;
+        background-color: #0fd8a0;
+        &:hover{
+            background-color: #00aff0;
+        }
+    }
+    &.btn-skyblue-red{
+        background-image: linear-gradient(to right, #99dff9, #f93d66);
+        &:hover{
+            color: #ffffff;
+            background-image: linear-gradient(to right, #f93d66, #f93d66);
+        }
+    }
+    &.btn-yellow-green{
+        background-image: linear-gradient(to right, #feb748, #06d79c);
+        &:hover{
+            color: #ffffff;
+            background-image: linear-gradient(to right, #feb748, #feb748);
+        }
+    }
+    
+    &.btn-red-limered{
+        background-image: linear-gradient(to right, #c20f42, #ecb7c6);
+        &:hover{
+            background-image: linear-gradient(to right, #c20f42, #c20f42);
+        }
+    }
+    &.btn-yellow-red{
+        background-image: linear-gradient(to right, #feb748, #f93d66);
+        &:hover{
+            color: #ffffff;
+            background-image: linear-gradient(to right, #feb748, #feb748);
+        }
+    }
+    &.btn-pink-limepink{
+        background-image: linear-gradient(to right, #ee0979, #f9b5d6);
+        &:hover{
+            color: #ffffff;
+            background-image: linear-gradient(to right, #ee0979, #ee0979);
+        }
+    }
+}
+
+@media screen and (max-height: 900px){
+    .cps-roadmap-section {
+        padding-bottom: 240px;
+        margin-top: 240px;
+    }
+}
+
+@media screen and(max-height: 700px){
+    .cps-roadmap-section {
+        padding-bottom: 200px;
+        margin-top: 200px;
+    }
+}

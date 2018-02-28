@@ -1,0 +1,172 @@
+    <article class="content dashboard-page" style="width:100%;">
+                    <section class="section">
+                        <div class="row sameheight-container">
+                            <div class="col col-12 col-sm-12 col-md-6 col-xl-5 stats-col">
+                                <div class="card sameheight-item stats" data-exclude="xs">
+                                    <div class="card-block">
+                                        <div class="title-block">
+                                            <h4 class="title"> <div class="greeting">!</div> </h4>
+                                        </div>
+                                        <div class="row row-sm stats-container">
+                                            <div class="col-12 col-sm-6 stat-col">
+                                                <div class="stat-icon">
+                                                    <i class="fa fa-rocket"></i>
+                                                </div>
+                                                <div class="stat">
+                                                    <div class="value"> <%= current_user.tasks.overdue.count %> </div>
+                                                    <div class="name"> Overdue tasks </div>
+                                                </div>
+<!--                                                 <div class="progress stat-progress">
+                                                    <div class="progress-bar" style="width: 75%;"></div>
+                                                </div> -->
+                                            </div>
+                                            <div class="col-12 col-sm-6 stat-col">
+                                                <div class="stat-icon">
+                                                    <i class="fa fa-rocket"></i>
+                                                </div>
+                                                <div class="stat">
+                                                    <div class="value"> <%= current_user.tasks.upcoming.count %> </div>
+                                                    <div class="name"> Upcoming tasks </div>
+                                                </div>
+<!--                                                 <div class="progress stat-progress">
+                                                    <div class="progress-bar" style="width: 25%;"></div>
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col col-12 col-sm-12 col-md-6 col-xl-7 history-col">
+                                <div class="card tasks sameheight-item" data-exclude="xs">
+                                    <div class="card-header card-header-sm bordered">
+                                        <div class="header-block">
+                                            <h3 class="title">Tasks</h3>
+                                        </div>
+                                    </div>
+                                    <div class="card-block">
+                                        <div class="tasks-block">
+                                            <section class="section">
+                                                <a href="?today=1"><button type="button" class="btn btn-primary-outline btn-sm">Today</button></a>
+                                                <a href="?upcoming=1"><button type="button" class="btn btn-primary-outline btn-sm">Upcoming</button></a>
+                                                <a href="?completed=1"><button type="button" class="btn btn-primary-outline btn-sm">Completed</button></a>
+                                                <a href="?all=1"><button type="button" class="btn btn-primary-outline btn-sm">All</button></a>
+                                            </section>
+ 
+                                            <ul class="item-list">
+                                                <% if @tasks.each do |value| %>
+                                                <li class="item">
+                                                    <div class="item-row">
+                                                        <div class="item-col item-col-title ">
+                                                            <label>
+                                                              <%= check_box_tag 'completed', value.id, value.completed, class: 'checkbox',
+                                                                  data: {
+                                                                    remote: true,
+                                                                    url: url_for(action: :toggle, controller: :tasks, id: value.id),
+                                                                    method: "POST"
+                                                                } %>
+                                                                <span><%= truncate(value.notes) %>
+                                                                <p class="
+                                                                <% if value.due_date.present? %>
+                                                                    <% if value.due_date < Date.today %>text-danger<% else %>secondary<% end %>
+                                                                <% end %>
+                                                                font-italic">
+                                                                <% if value.due_date.present? %><%= value.due_date.strftime("%B %d") %><% end %></p></span>
+                                                            </label>
+                                                       </div>
+                                                        <div class="item-col fixed item-col-actions-dropdown">
+                                                            <div class="item-actions-dropdown">
+                                                                <a class="item-actions-toggle-btn">
+                                                                    <span class="inactive">
+                                                                        <i class="fa fa-cog"></i>
+                                                                    </span>
+                                                                    <span class="active">
+                                                                        <i class="fa fa-chevron-circle-right"></i>
+                                                                    </span>
+                                                                </a>
+                                                                <div class="item-actions-block">
+                                                                    <ul class="item-actions-list">
+                                                                        <li>
+                                                                            <a class="remove" href="#" data-toggle="modal" data-target="#confirm-modal">
+                                                                                <i class="fa fa-trash-o "></i>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="check" href="#">
+                                                                                <i class="fa fa-check"></i>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="edit" href="item-editor.html">
+                                                                                <i class="fa fa-pencil"></i>
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <% end.empty? %>
+                                                    No tasks.
+                                                <% end %>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <section class="section map-tasks">
+                        <div class="row sameheight-container">
+                            <div class="col-md-6">
+                                <div class="card tasks sameheight-item" data-exclude="xs,sm">
+                                    <div class="card-header bordered">
+                                        <div class="header-block">
+                                            <h3 class="title"> Added jobs (per day) </h3>
+                                        </div>
+                                    </div>
+                                    <div class="card-block">
+                                        <%= column_chart current_user.cards.last_week.group_by_day(:created_at).count %>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="card tasks sameheight-item" data-exclude="xs,sm">
+                                    <div class="card-header bordered">
+                                        <div class="header-block">
+                                            <h3 class="title"> Jobs by status </h3>
+                                        </div>
+                                    </div>
+                                    <div class="card-block">
+                                        <%= pie_chart current_user.cards.joins(:swimlane).group(:name).count %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </article>
+
+
+
+<script>
+var thehours = new Date().getHours();
+	var themessage;
+	var morning = ('Good morning');
+	var afternoon = ('Good afternoon');
+	var evening = ('Good evening');
+
+	if (thehours >= 0 && thehours < 12) {
+		themessage = morning;
+
+	} else if (thehours >= 12 && thehours < 17) {
+		themessage = afternoon;
+
+	} else if (thehours >= 17 && thehours < 24) {
+		themessage = evening;
+	}
+
+$('.greeting').prepend(themessage);
+</script>

@@ -1,0 +1,41 @@
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                    <%= devise_error_messages! %>
+                    <div class="auth-content">
+
+                         <a class="btn btn-block btn-social btn-facebook" href="/users/auth/facebook">
+                            <span class="fa fa-facebook"></span> Sign in with Facebook
+                          </a>
+
+                        <a class="btn btn-block btn-social btn-twitter" href="/users/auth/twitter">
+                        <span class="fa fa-twitter"></span> Sign in with Twitter
+                        </a>
+
+                        <hr />
+
+                        <p class="text-center">SIGN UP</p>
+
+                        <form id="login-form" action="/index.html" method="GET" novalidate=""">
+                            <div class="form-group">
+                                <label for="username">Email address</label>
+                                <%= f.email_field :email, autofocus: true, autofocus: true, value: params['user_email'], placeholder: "Email address", class: "form-control underlined" %> </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "form-control underlined" %> </div>
+                            <div class="form-group">
+                                <label for="password">Password (confirmation)</label>
+                                <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Password", class: "form-control underlined" %> </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-block btn-primary">Sign up</button>
+                            </div>
+                            <div class="form-group">
+                                <p class="text-muted text-center">
+                                  <%= render "users/shared/links" %>
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+<% end %>
+<script>
+  fbq('track', 'Lead');
+</script>

@@ -1,0 +1,79 @@
+/*-------------------------------------------
+41. Tabbed Link
+-------------------------------------------*/
+.tabbed-link{
+    a{
+        display: block;
+        position: relative;
+        color: #262626;
+        border: 1px solid #e7e7e7;
+        padding: 32px 60px 32px 40px ;
+        + a{
+            margin-top: 20px;
+        }
+        &:after{
+            content: "\f0da";
+            font-family: "FontAwesome";
+            font-size: 2.5rem;
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+}
+
+.bubble-facts{
+    min-height: 480px;
+    position: relative;
+}
+.bubble-fact-item{
+    position: absolute;
+    text-align: center;
+    color: #ffffff;
+    border-radius: 50%;
+    padding-left: 10px;
+    padding-right: 10px;
+    .fact-value{
+        font-size: 3.6rem;
+        margin: 0;
+        font-family: $headingFont;
+        font-weight: 500;
+    }
+    .fact-name{
+        margin: 0;
+        font-family: $headingFont;
+        font-size: 1.2rem;
+        line-height: 1.5rem;
+    }
+}
+.bubble-fact-md{
+    top: 65px;
+    left: 60px;
+    width: 225px;
+    height: 225px;
+    padding-top: 80px;
+}
+.bubble-fact-orange{
+    background-color: #fb8532;
+}
+.bubble-fact-sm{
+    left: 315px;
+    top: 105px;
+    width: 175px;
+    height: 175px;
+    padding-top: 54px;
+}
+.bubble-fact-blue{
+    background-color: #00aff0;
+}
+.bubble-fact-xs{
+    left: 222px;
+    top: 290px;
+    width: 125px;
+    height: 125px;
+    padding-top: 28px;
+}
+.bubble-fact-purple{
+    background-color: #6f42c1;
+}

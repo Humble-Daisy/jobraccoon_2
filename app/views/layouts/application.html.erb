@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+ <html>
+ 	<%= render 'layouts/head' %>
+    <body>
+        <div class="auth">
+            <div class="auth-container">
+                <div class="card">
+                    <header class="auth-header">
+                        <h1 class="auth-title">
+                            <div class="brand" style="color:#000">
+                                <img src="/images/logo.png" width="30" height="30" alt="Seeker CRM">
+                                Job Raccoon
+                            </div>
+                    </header>
+
+ 					<% if notice %>
+ 						<p class="notice"><%= notice %></p>
+ 					<% end %>
+ 					<% if alert %>
+ 						<p class="alert"><%= alert %></p>
+ 					<% end %>
+ 
+ 					<%= yield %>
+				</div>
+                <div class="text-center">
+                    <a href="/" class="btn btn-secondary btn-sm">
+                        <i class="fa fa-arrow-left"></i> Back to website </a>
+                </div>
+            </div>
+        </div>
+        <!-- Reference block for JS -->
+        <div class="ref" id="ref">
+            <div class="color-primary"></div>
+            <div class="chart">
+                <div class="color-primary"></div>
+                <div class="color-secondary"></div>
+            </div>
+        </div>
+        <%= render 'shared/modals/send_support_request' %>
+        <script   src="https://code.jquery.com/jquery-3.2.1.min.js"   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+</html>

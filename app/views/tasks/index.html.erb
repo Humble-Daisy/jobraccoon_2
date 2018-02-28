@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Tasks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if @card == nil %>
+      <% loop_var = @tasks %>
+    <% else %>
+      <% loop_var = @card.tasks %>
+    <% end %>
+    <% loop_var.each do |task| %>
+      <tr>
+        <td><%= task.name %></td>
+        <td><%= task.try(:due_date).try(:strftime, '%B %e at %l:%M %p') %></td>
+        <td><%= link_to 'Show', task %></td>
+        <td><%= link_to 'Edit', edit_task_path(task) %></td>
+        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to "New Task (linked to card)", new_card_task_path if @card != nil %>
+<%= link_to "New Task (not linked to card)", new_task_path if @card == nil %>
