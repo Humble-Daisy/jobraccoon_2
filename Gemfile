@@ -28,6 +28,7 @@ gem 'puma'
 gem 'chartkick'
 gem 'groupdate'
 gem 'active_median'
+gem 'annotate'
 
 # =======================
 # API
@@ -117,7 +118,7 @@ group :development, :test do
   # Spring for faster gaurd test loading
   gem 'spring-commands-rspec', '>= 1.0.4'
   # Fixtures replacement
-  gem 'factory_girl_rails', '>= 4.5.0'
+  gem 'factory_bot_rails'
 
   gem 'rspec-collection_matchers', '>= 1.1.2'
   # Fake data generator

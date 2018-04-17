@@ -52,8 +52,8 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 
-  # Allow for short methods of FactoryGirl to be user - build(:user) vs. FactoryGirl.build(:user)
-  config.include FactoryGirl::Syntax::Methods
+  # Allow for short methods of FactoryBot to be user - build(:user) vs. FactoryBot.build(:user)
+  config.include FactoryBot::Syntax::Methods
 
     # Clean database between test to avoid duplicating data
   config.before(:suite) do
