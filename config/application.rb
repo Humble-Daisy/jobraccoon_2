@@ -1,4 +1,4 @@
-require File.expand_path('../boot', __FILE__)
+require_relative 'boot'
 
 require 'rails/all'
 require 'yaml'
@@ -9,7 +9,7 @@ APP_CONFIG = YAML.load_file("config/global_config.yml")
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module SeekerCRM 
+module SeekerCRM
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

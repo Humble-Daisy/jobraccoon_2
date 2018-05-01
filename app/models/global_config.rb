@@ -22,7 +22,7 @@
 #  updated_at              :datetime
 #
 
-class GlobalConfig < ActiveRecord::Base
+class GlobalConfig < ApplicationRecord
 	after_update :update_global_config
 
 

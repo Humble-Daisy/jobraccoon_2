@@ -18,8 +18,8 @@
 #  demo        :boolean
 #
 
-class Card < ActiveRecord::Base
-  belongs_to :swimlane
+class Card < ApplicationRecord
+  belongs_to :swimlane, optional: true
   has_many :tasks, :dependent => :destroy
 
   scope :last_week, lambda { where("created_at >= :date", :date => 1.week.ago) }

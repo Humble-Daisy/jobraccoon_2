@@ -9,8 +9,8 @@
 #  updated_at :datetime         not null
 #
 
-class Board < ActiveRecord::Base
-  belongs_to :user
+class Board < ApplicationRecord
+  belongs_to :user, optional: true
   has_many :swimlanes, -> { order("swimlanes.id ASC") }
   has_many :cards
 end

@@ -23,7 +23,7 @@
 #  updated_at             :datetime
 #
 
-class User < ActiveRecord::Base
+class User < ApplicationRecord
 
   has_many :boards
   has_many :swimlanes

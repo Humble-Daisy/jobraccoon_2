@@ -13,7 +13,8 @@ gem 'dotenv-rails', '>= 2.0.0', require: 'dotenv/rails-now'
 # =======================
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.10'
+# gem 'rails', '4.2.10'
+gem 'rails', '>= 5.0.0.rc2', '< 5.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '0.18.2'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -73,7 +74,8 @@ gem 'exception_notification'
 # =======================
 
 # Core Admin Panel
-gem 'rails_admin', '~> 0.8.0'
+# gem 'rails_admin', '~> 0.8.0'
+gem 'rails_admin', '~> 1.3'
 # Slack Support For Notifications
 gem 'slack-poster'
 
@@ -81,6 +83,7 @@ gem 'slack-poster'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 gem 'simple_form'
+
 
 # =======================
 # UI GEMS

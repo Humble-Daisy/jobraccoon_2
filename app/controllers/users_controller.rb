@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   layout :resolve_layout #Before rendering check which layout we should show
   before_action :set_user, only: [:index, :show, :edit, :update, :destroy, :finish_signup]
-  skip_before_filter :require_login
+  # skip_before_action :require_login
 
   # After login go here
   def index

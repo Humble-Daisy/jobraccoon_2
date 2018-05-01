@@ -10,8 +10,8 @@
 #  updated_at :datetime
 #
 
-class Identity < ActiveRecord::Base
-  belongs_to :user
+class Identity < ApplicationRecord
+  belongs_to :user, optional: true
   validates_presence_of :uid, :provider, :user_id
   validates_uniqueness_of :uid, :scope => :provider
 

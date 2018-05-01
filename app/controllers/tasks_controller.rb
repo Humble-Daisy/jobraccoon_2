@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy, :toggle]
-  before_filter :find_card, :only => [:index]
+  before_action :find_card, :only => [:index]
 
   # GET /tasks
   # GET /tasks.json
@@ -48,9 +48,9 @@ class TasksController < ApplicationController
     end
   end
 
-	def toggle 
+	def toggle
 		@task.toggle!(:completed)
-		render :text => "success" 
+		render :text => "success"
 	end
 
   # DELETE /tasks/1

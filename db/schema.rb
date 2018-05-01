@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -21,9 +20,8 @@ ActiveRecord::Schema.define(version: 20171215183416) do
     t.text     "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_boards_on_user_id", using: :btree
   end
-
-  add_index "boards", ["user_id"], name: "index_boards_on_user_id", using: :btree
 
   create_table "cards", force: :cascade do |t|
     t.integer  "swimlane_id"
@@ -39,14 +37,8 @@ ActiveRecord::Schema.define(version: 20171215183416) do
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
     t.boolean  "demo"
-  end
-
-  add_index "cards", ["swimlane_id"], name: "index_cards_on_swimlane_id", using: :btree
-  add_index "cards", ["user_id"], name: "index_cards_on_user_id", using: :btree
-
-  create_table "dashboards", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["swimlane_id"], name: "index_cards_on_swimlane_id", using: :btree
+    t.index ["user_id"], name: "index_cards_on_user_id", using: :btree
   end
 
   create_table "global_configs", force: :cascade do |t|
@@ -75,9 +67,8 @@ ActiveRecord::Schema.define(version: 20171215183416) do
     t.string   "uid"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["user_id"], name: "index_identities_on_user_id", using: :btree
   end
-
-  add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
 
   create_table "swimlanes", force: :cascade do |t|
     t.integer  "board_id"
@@ -86,9 +77,8 @@ ActiveRecord::Schema.define(version: 20171215183416) do
     t.text     "icon"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["board_id"], name: "index_swimlanes_on_board_id", using: :btree
   end
-
-  add_index "swimlanes", ["board_id"], name: "index_swimlanes_on_board_id", using: :btree
 
   create_table "tasks", force: :cascade do |t|
     t.string   "name"
@@ -102,10 +92,9 @@ ActiveRecord::Schema.define(version: 20171215183416) do
     t.boolean  "completed"
     t.string   "subline"
     t.integer  "user_id"
+    t.index ["card_id"], name: "index_tasks_on_card_id", using: :btree
+    t.index ["user_id"], name: "index_tasks_on_user_id", using: :btree
   end
-
-  add_index "tasks", ["card_id"], name: "index_tasks_on_card_id", using: :btree
-  add_index "tasks", ["user_id"], name: "index_tasks_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
@@ -126,11 +115,10 @@ ActiveRecord::Schema.define(version: 20171215183416) do
     t.boolean  "admin",                  default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
-
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "boards", "users"
   add_foreign_key "cards", "swimlanes"
