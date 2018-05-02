@@ -14,7 +14,10 @@ gem 'dotenv-rails', '>= 2.0.0', require: 'dotenv/rails-now'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 # gem 'rails', '4.2.10'
-gem 'rails', '>= 5.0.0.rc2', '< 5.1'
+gem 'rails', '~> 5.2.0'
+
+gem 'bootsnap'
+
 # Use postgresql as the database for Active Record
 gem 'pg', '0.18.2'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -107,7 +110,7 @@ gem 'sass-rails', '~> 5.0.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '~> 2.7.0'
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
+gem 'coffee-rails'
 # Compress css to inline styles for HTML emails
 gem 'roadie-rails'
 
